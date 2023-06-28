@@ -11,12 +11,11 @@ print(f"Поздравляю, {Fam}! У Вас автоматом {Mark} за э
 2
 a = int(input("Введите сколько чисел: "))
 mas = []
-sum  = 0
+sum  = 0.0
 for i in range(a):
     mas.append(int(input(f"Введите число номер {i+1}:")))
-    sum+=mas[i]
-
-print(f"{mas} среднее знач. {round(float(sum)/float(a),2)}  округленние {round(float(sum)/float(a)) } в меньшую {int(float(sum)/float(a)) }")
+    sum+=float(mas[i])
+print(f"{mas} среднее знач. {round(sum/a,2)}  округленние {round(sum/a) } в меньшую {int(sum/a) }")
 
 
 3
@@ -73,8 +72,20 @@ else:
     print("Вы проиграли")
 
 5
+dataizg = datetime.date.today() + datetime.timedelta(days=random.randint(-7,0))
+godnodo = dataizg+ datetime.timedelta(days=random.randint(1,7)) 
+price = random.randint(10,100)
 
+print(f"Дата изготовление {dataizg}  годно до {godnodo} сегодня {datetime.date.today()} цена {price}")
 
+if dataizg == datetime.date.today():
+    pass
+elif godnodo > datetime.date.today():
+    price*=0.8
+else:
+    price = 0
+    
+print(f"Цена после перерасчёта {round(price,2)}")
 
 6
 person_dict = { 'person_id': [41, 84, 72], 
@@ -145,16 +156,14 @@ class Student:
         self.group = group
         self.yerPost = yerPost
         
-#     def Print(self):
-#         print(f"Студент {self.fio} группы {self.group} года поступления {self.yerPost}" )
+
     def GenMarks(self):
         for i in range(11):
-            Student.Estimation.append(randomMaks[random.randint(0,6)])
-            Student.date.append(datetime.date.today() + datetime.timedelta(days=i))
+            self.Estimation.append(randomMaks[random.randint(0,6)])
+            self.date.append(datetime.date.today() + datetime.timedelta(days=i))
     def PrintMarks(self):
         for i in range(len(Student.Estimation)):
-            print(Student.Estimation[i])
-            print(Student.date[i])
+            print(f"студент {self.name} оценки{Student.Estimation[i]}||{Student.date[i]}")
             
 aboba1 = Student("негр1", "Ис-21", "18-06-2023")
 print(aboba1)
